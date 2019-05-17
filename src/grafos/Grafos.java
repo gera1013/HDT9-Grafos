@@ -32,9 +32,6 @@ public class Grafos {
             if(!cities.contains(city2)) cities.add(city2);
         }
         
-        //System.out.println(cities.toString());
-        //Grafo g = new Grafo(cities.size());
-        
         int[][] grafo = new int[cities.size()][cities.size()];
         
         for(String x : array){
@@ -42,7 +39,6 @@ public class Grafos {
             String origen = b[0];
             String destino = b[1];
             String distancia = b[2];
-            //g.addEdge(cities.indexOf(origen), Integer.parseInt(distancia), cities.indexOf(destino));
             grafo[cities.indexOf(origen)][cities.indexOf(destino)] = Integer.parseInt(distancia);
         }
                 
@@ -77,7 +73,6 @@ public class Grafos {
             }
             
             Floyd a = new Floyd(cities.size());
-            a.printSolution(grafo);
             int[][] caminoCorto = a.floydWarshall(grafo);
 
             switch(x){
@@ -90,7 +85,7 @@ public class Grafos {
                             + " es incorrecta\n");
                     else{
                         int distanciaCorta = caminoCorto[cities.indexOf(origen)][cities.indexOf(destino)];
-                        System.out.println("La distancia mas corta entre " + origen + " y " + destino + "es de " + distanciaCorta + " kilometros");
+                        System.out.println("\nLa distancia mas corta entre " + origen + " y " + destino + " es de " + distanciaCorta + " kilometros");
                     }
                     break;
                 case 2:
@@ -113,7 +108,7 @@ public class Grafos {
                     
                     for(int i = 0; i < cities.size(); i++) if(maximos[i] < max) max = maximos[i];
                     
-                    System.out.println("El centro del grafo es: " + cities.get(max));
+                    System.out.println("\nEl centro del grafo es " + cities.get(max));
                     break;
                 case 3:
                     System.out.println("Ingrese la ciudad de origen de la ruta bloqueada");
@@ -124,6 +119,7 @@ public class Grafos {
                             + " es incorrecta\n");
                     else{
                         grafo[cities.indexOf(origen)][cities.indexOf(destino)] = 0;
+                        System.out.println("\nRuta entre " + origen + " y " + destino + " actualizada con exito");
                     }
                     break;
                 case 4:
@@ -138,6 +134,7 @@ public class Grafos {
                         if(scan.hasNextInt()) {
                             int distancia = scan.nextInt();
                             grafo[cities.indexOf(origen)][cities.indexOf(destino)] = distancia;
+                            System.out.println("\nNueva ruta entre " + origen + " y " + destino + " creada con exito");
                         }
                         else{
                             System.out.println("Ingrese un valor numerico para la ruta");
@@ -145,28 +142,10 @@ public class Grafos {
                     }
                     break;
                 case 5:
-                    System.out.println("Finalizando programa...");
+                    System.out.println("\nFinalizando programa...");
                     System.exit(0);
                     break;
             }
         }
-        
-        //System.out.println(g);
     } 
-        
-        
-	/*g.addEdge(0, 2, 3);
-	g.addEdge(0, 5, 5);
-	g.addEdge(2, 5, 9);
-	g.addEdge(9, 3, 6);
-        g.addCiudad("Guatemala");
-        g.addCiudad("Chiquimula");
-        g.addCiudad("Zacapa");
-        g.addCiudad("Jalapa");
-        g.addCiudad("Jutiapa");
-        g.addCiudad("El Progreso");
-        g.addCiudad("Peten");
-        g.addCiudad("Huehuetenango");
-        g.addCiudad("Amatitlan");
-        g.addCiudad("Izabal");*/
 }
