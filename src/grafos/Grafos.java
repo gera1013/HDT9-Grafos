@@ -72,6 +72,7 @@ public class Grafos {
                 }
             }
             
+            Grafos g = new Grafos();
             Floyd a = new Floyd(cities.size());
             int[][] caminoCorto = a.floydWarshall(grafo);
 
@@ -89,26 +90,7 @@ public class Grafos {
                     }
                     break;
                 case 2:
-                    int[] maximos = new int[cities.size()];
-
-                    for(int i = 0; i < cities.size(); i++)
-                    {
-                        int max = 0;
-                        for(int j = 0; j < cities.size(); j++)
-                        {
-                            if(i != j && caminoCorto[j][i] > max)
-                            {
-                                max = caminoCorto[i][j];
-                                maximos[i] = max;
-                            }
-                        }
-                    }
-                    
-                    int max = 10000;
-                    
-                    for(int i = 0; i < cities.size(); i++) if(maximos[i] < max) max = maximos[i];
-                    
-                    System.out.println("\nEl centro del grafo es " + cities.get(max));
+                    g.centro(caminoCorto, cities);
                     break;
                 case 3:
                     System.out.println("Ingrese la ciudad de origen de la ruta bloqueada");
@@ -147,5 +129,25 @@ public class Grafos {
                     break;
             }
         }
-    } 
+    }
+    
+    public void centro(int[][] grafo, ArrayList<String> cities){
+        int[] maximos = new int[cities.size()];
+        for(int i = 0; i < cities.size(); i++)
+        {
+            int max = 0;
+            for(int j = 0; j < cities.size(); j++)
+            {
+                if(i != j && grafo[j][i] > max)
+                {
+                    max = grafo[i][j];
+                    maximos[i] = max;
+                }
+            }
+        }
+        int min = 10000;
+        
+        for(int i = 0; i < cities.size(); i++) if(maximos[i] < min) min = maximos[i];
+        System.out.println("\nEl centro del grafo es " + cities.get(min));
+    }
 }
