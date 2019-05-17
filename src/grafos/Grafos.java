@@ -3,16 +3,16 @@ package grafos;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Grafos {
     public static void main(String[] args) throws FileNotFoundException 
     {
-        int INF = 999999;
         ArrayList<String> cities = new ArrayList();
         ArrayList<String> array = new ArrayList(); 
         Scanner read = new Scanner(new File("guategrafo.txt"));
-        //Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         read.useDelimiter("\\r\\n");
         String data;
         
@@ -32,8 +32,8 @@ public class Grafos {
             if(!cities.contains(city2)) cities.add(city2);
         }
         
-        System.out.println(cities.toString());
-        Grafo g = new Grafo(cities.size());
+        //System.out.println(cities.toString());
+        //Grafo g = new Grafo(cities.size());
         
         int[][] grafo = new int[cities.size()][cities.size()];
         
@@ -42,39 +42,116 @@ public class Grafos {
             String origen = b[0];
             String destino = b[1];
             String distancia = b[2];
-            g.addEdge(cities.indexOf(origen), Integer.parseInt(distancia), cities.indexOf(destino));
+            //g.addEdge(cities.indexOf(origen), Integer.parseInt(distancia), cities.indexOf(destino));
             grafo[cities.indexOf(origen)][cities.indexOf(destino)] = Integer.parseInt(distancia);
         }
-        
-        for(int i = 0; i < cities.size(); i++){
-            for(int j = 0; j < cities.size(); j++){
-                if(i != j && grafo[i][j] == 0){
-                    grafo[i][j] = 99999;
-                }
-            }
-        }
                 
+        int x = 0;
         
-        Floyd a = new Floyd(cities.size());
-        
-        int[][] caminoCorto = a.floydWarshall(grafo);
-        int[] maximos = new int[cities.size()];
-        
-        for(int i = 0; i < cities.size(); i++){
-            int max = 0;
-            for(int j = 0; j < cities.size(); j++){
-                if(i != j && caminoCorto[j][i] > max){
-                    max = caminoCorto[i][j];
-                    maximos[i] = max;
+        while(x != 5)
+        {
+            try{
+                System.out.println("\nIngrese una opción del menu\n1. Mostrar valor de ruta más corta\n2. Mostrar centro del grafo\n3. Interrupcion de trafico entre ciudades\n"
+                + "4. Nueva conexion entre ciudades\n5. Salir");
+                x = scan.nextInt();
+                String jump = scan.nextLine();
+                
+                while(x >= 6 || x <= 0)
+                {
+                    System.out.println("\nIngrese una opción del menu\n1. Mostrar valor de ruta más corta\n2. Mostrar centro del grafo\n3. Interrupcion de trafico entre ciudades\n"
+                + "4. Nueva conexion entre ciudades\n5. Salir");
+                    x = scan.nextInt();
                 }
+            } catch(InputMismatchException e)
+            {
+                System.out.println("Ingrese solamente numeros por favor");
+                System.exit(0);
+            }
+            
+            for(int i = 0; i < cities.size(); i++){
+                for(int j = 0; j < cities.size(); j++){
+                    if(i != j && grafo[i][j] == 0){
+                        grafo[i][j] = 99999;
+                    }
+                }
+            }
+            
+            Floyd a = new Floyd(cities.size());
+            a.printSolution(grafo);
+            int[][] caminoCorto = a.floydWarshall(grafo);
+
+            switch(x){
+                case 1:
+                    System.out.println("Ingrese la ciudad de origen de la ruta deseada");
+                    String origen = scan.nextLine();
+                    System.out.println("Ingrese la ciudad de destino de la ruta deseada");
+                    String destino = scan.nextLine();
+                    if(cities.lastIndexOf(origen) < 0 || cities.lastIndexOf(destino) < 0) System.out.println("\nAlguna de las ciudades ingresadas"
+                            + " es incorrecta\n");
+                    else{
+                        int distanciaCorta = caminoCorto[cities.indexOf(origen)][cities.indexOf(destino)];
+                        System.out.println("La distancia mas corta entre " + origen + " y " + destino + "es de " + distanciaCorta + " kilometros");
+                    }
+                    break;
+                case 2:
+                    int[] maximos = new int[cities.size()];
+
+                    for(int i = 0; i < cities.size(); i++)
+                    {
+                        int max = 0;
+                        for(int j = 0; j < cities.size(); j++)
+                        {
+                            if(i != j && caminoCorto[j][i] > max)
+                            {
+                                max = caminoCorto[i][j];
+                                maximos[i] = max;
+                            }
+                        }
+                    }
+                    
+                    int max = 10000;
+                    
+                    for(int i = 0; i < cities.size(); i++) if(maximos[i] < max) max = maximos[i];
+                    
+                    System.out.println("El centro del grafo es: " + cities.get(max));
+                    break;
+                case 3:
+                    System.out.println("Ingrese la ciudad de origen de la ruta bloqueada");
+                    origen = scan.nextLine();
+                    System.out.println("Ingrese la ciudad de destino de la ruta bloqueada");
+                    destino = scan.nextLine();
+                    if(cities.lastIndexOf(origen) < 0 || cities.lastIndexOf(destino) < 0) System.out.println("\nAlguna de las ciudades ingresadas"
+                            + " es incorrecta\n");
+                    else{
+                        grafo[cities.indexOf(origen)][cities.indexOf(destino)] = 0;
+                    }
+                    break;
+                case 4:
+                    System.out.println("Ingrese la ciudad de origen de la nueva ruta");
+                    origen = scan.nextLine();
+                    System.out.println("Ingrese la ciudad de destino de la nueva ruta");
+                    destino = scan.nextLine();
+                    if(cities.lastIndexOf(origen) < 0 || cities.lastIndexOf(destino) < 0) System.out.println("\nAlguna de las ciudades ingresadas"
+                            + " es incorrecta\n");
+                    else{
+                        System.out.println("Ingrese la distancia de la nueva ruta");
+                        if(scan.hasNextInt()) {
+                            int distancia = scan.nextInt();
+                            grafo[cities.indexOf(origen)][cities.indexOf(destino)] = distancia;
+                        }
+                        else{
+                            System.out.println("Ingrese un valor numerico para la ruta");
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.println("Finalizando programa...");
+                    System.exit(0);
+                    break;
             }
         }
         
-        int max = 10000;
-        for(int i = 0; i < cities.size(); i++) if(maximos[i] < max) max = maximos[i];
-        
-        System.out.println("El centro del grafo es: " + cities.get(max));
-        System.out.println(g);
+        //System.out.println(g);
     } 
         
         

@@ -58,7 +58,7 @@ public class Floyd
         return dist;
     } 
   
-    void printSolution(int dist[][]) 
+    public void printSolution(int dist[][]) 
     { 
         System.out.println("The following matrix shows the shortest "+ 
                          "distances between every pair of vertices"); 
@@ -66,7 +66,7 @@ public class Floyd
         { 
             for (int j=0; j<V; ++j) 
             { 
-                if (dist[i][j]==INF) 
+                if (dist[i][j] == INF) 
                     System.out.print("INF "); 
                 else
                     System.out.print(dist[i][j]+"   "); 
