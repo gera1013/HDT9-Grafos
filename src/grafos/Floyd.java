@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grafos;
 
 /**
  *
  * @author Gerardo
  */
-import java.util.*; 
-import java.lang.*; 
-import java.io.*; 
-  
+
   
 public class Floyd 
 { 
@@ -22,7 +14,7 @@ public class Floyd
         V = vertex;
     }
   
-    void floydWarshall(int graph[][]) 
+    int[][] floydWarshall(int graph[][]) 
     { 
         int dist[][] = new int[V][V]; 
         int i, j, k; 
@@ -63,6 +55,7 @@ public class Floyd
   
         // Print the shortest distance matrix 
         printSolution(dist); 
+        return dist;
     } 
   
     void printSolution(int dist[][]) 

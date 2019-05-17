@@ -53,12 +53,27 @@ public class Grafos {
                 }
             }
         }
-            
                 
         
         Floyd a = new Floyd(cities.size());
         
-        a.floydWarshall(grafo); 
+        int[][] caminoCorto = a.floydWarshall(grafo);
+        int[] maximos = new int[cities.size()];
+        
+        for(int i = 0; i < cities.size(); i++){
+            int max = 0;
+            for(int j = 0; j < cities.size(); j++){
+                if(i != j && caminoCorto[j][i] > max){
+                    max = caminoCorto[i][j];
+                    maximos[i] = max;
+                }
+            }
+        }
+        
+        int max = 10000;
+        for(int i = 0; i < cities.size(); i++) if(maximos[i] < max) max = maximos[i];
+        
+        System.out.println("El centro del grafo es: " + cities.get(max));
         System.out.println(g);
     } 
         
