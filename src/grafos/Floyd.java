@@ -1,10 +1,11 @@
-package grafos;
+//package grafos;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Gerardo
+ * Clase Floyd con los metodos floydWarshall() y printSolution() referenciada de 
+ * la página GeeksforGeeks, Floyd Warshall Algorithm | DP-16.
+ * Modificada ligeramente para el uso de la misma en este laboratorio.
  */
 
   
