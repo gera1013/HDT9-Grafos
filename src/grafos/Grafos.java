@@ -124,7 +124,6 @@ public class Grafos {
                     break;
                 case 5:
                     a.printSolution(caminoCorto);
-                    System.out.println(caminoCorto[5][0]);
                     break;
                 case 6:
                     System.out.println("\nFinalizando programa...");

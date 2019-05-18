@@ -52,7 +52,7 @@ public class Floyd
         return dist;
     } 
   
-    public void printSolution(int dist[][]) 
+    void printSolution(int dist[][]) 
     { 
         System.out.println("\nSe muestran las rutas mas cortas entre las ciudades"); 
         for (int i=0; i<V; ++i) 
