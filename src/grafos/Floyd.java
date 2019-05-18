@@ -72,7 +72,7 @@ public class Floyd
         } 
     }
     
-    void centro(int[][] grafo, ArrayList<String> cities){
+    String centro(int[][] grafo, ArrayList<String> cities){
         int[] maximos = new int[cities.size()];
         for(int i = 0; i < cities.size(); i++)
         {
@@ -90,5 +90,6 @@ public class Floyd
         
         for(int i = 0; i < cities.size(); i++) if(maximos[i] < min) min = maximos[i];
         System.out.println("\nEl centro del grafo es " + cities.get(min));
+        return cities.get(min);
     }
 }
