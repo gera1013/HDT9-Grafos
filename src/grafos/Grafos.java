@@ -44,18 +44,18 @@ public class Grafos {
                 
         int x = 0;
         
-        while(x != 5)
+        while(x != 6)
         {
             try{
                 System.out.println("\nIngrese una opción del menu\n1. Mostrar valor de ruta más corta\n2. Mostrar centro del grafo\n3. Interrupcion de trafico entre ciudades\n"
-                + "4. Nueva conexion entre ciudades\n5. Salir");
+                + "4. Nueva conexion entre ciudades\n5. Imprimir matriz de grafo\n6. Salir");
                 x = scan.nextInt();
                 String jump = scan.nextLine();
                 
-                while(x >= 6 || x <= 0)
+                while(x >= 7 || x <= 0)
                 {
                     System.out.println("\nIngrese una opción del menu\n1. Mostrar valor de ruta más corta\n2. Mostrar centro del grafo\n3. Interrupcion de trafico entre ciudades\n"
-                + "4. Nueva conexion entre ciudades\n5. Salir");
+                + "4. Nueva conexion entre ciudades\n5. Imprimir matriz de grafo\n6. Salir");
                     x = scan.nextInt();
                 }
             } catch(InputMismatchException e)
@@ -72,7 +72,6 @@ public class Grafos {
                 }
             }
             
-            Grafos g = new Grafos();
             Floyd a = new Floyd(cities.size());
             int[][] caminoCorto = a.floydWarshall(grafo);
 
@@ -90,7 +89,7 @@ public class Grafos {
                     }
                     break;
                 case 2:
-                    g.centro(caminoCorto, cities);
+                    a.centro(caminoCorto, cities);
                     break;
                 case 3:
                     System.out.println("Ingrese la ciudad de origen de la ruta bloqueada");
@@ -124,30 +123,13 @@ public class Grafos {
                     }
                     break;
                 case 5:
+                    a.printSolution(caminoCorto);
+                    break;
+                case 6:
                     System.out.println("\nFinalizando programa...");
                     System.exit(0);
                     break;
             }
         }
-    }
-    
-    public void centro(int[][] grafo, ArrayList<String> cities){
-        int[] maximos = new int[cities.size()];
-        for(int i = 0; i < cities.size(); i++)
-        {
-            int max = 0;
-            for(int j = 0; j < cities.size(); j++)
-            {
-                if(i != j && grafo[j][i] > max)
-                {
-                    max = grafo[i][j];
-                    maximos[i] = max;
-                }
-            }
-        }
-        int min = 10000;
-        
-        for(int i = 0; i < cities.size(); i++) if(maximos[i] < min) min = maximos[i];
-        System.out.println("\nEl centro del grafo es " + cities.get(min));
     }
 }

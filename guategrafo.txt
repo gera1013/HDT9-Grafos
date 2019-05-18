@@ -37,10 +37,10 @@ Antigua Guatemala,Coban,94
 Antigua Guatemala,Escuintla,6
 Antigua Guatemala,Huehuetenango,43
 Antigua Guatemala,Jacaltenango,88
-Antigua Guatemala,Jalapa,100
+Antigua Guatemala,Jalapa,98
 Antigua Guatemala,Jutiapa,94
 Antigua Guatemala,Mazatenango,67
-Antigua Guatemala,Mixco,101
+Antigua Guatemala,Mixco,99
 Antigua Guatemala,Petapa,43
 Antigua Guatemala,Puerto Barrios,8
 Antigua Guatemala,Quetzaltenango,47
@@ -51,7 +51,7 @@ Antigua Guatemala,San Juan Sacatepequez,11
 Antigua Guatemala,San Miguel Chicaj,63
 Antigua Guatemala,San Pedro Sacatepequez,96
 Antigua Guatemala,Sanarate,30
-Antigua Guatemala,Santa Lucia Cotzumalguapa,101
+Antigua Guatemala,Santa Lucia Cotzumalguapa,99
 Antigua Guatemala,Solola,30
 Antigua Guatemala,Totonicapan,77
 Antigua Guatemala,Villa Nueva,1
@@ -84,11 +84,11 @@ Barberena,Santa Lucia Cotzumalguapa,60
 Barberena,Solola,63
 Barberena,Totonicapan,12
 Barberena,Villa Nueva,29
-Barberena,Zacapa,101
+Barberena,Zacapa,99
 Chichicastenango,Ciudad de Guatemala,81
 Chichicastenango,Antigua Guatemala,95
 Chichicastenango,Barberena,63
-Chichicastenango,Chimaltenango,101
+Chichicastenango,Chimaltenango,99
 Chichicastenango,Chiquimula,77
 Chichicastenango,Coatepeque,28
 Chichicastenango,Coban,42
@@ -139,7 +139,7 @@ Chimaltenango,San Miguel Chicaj,97
 Chimaltenango,San Pedro Sacatepequez,48
 Chimaltenango,Sanarate,27
 Chimaltenango,Santa Lucia Cotzumalguapa,84
-Chimaltenango,Solola,101
+Chimaltenango,Solola,99
 Chimaltenango,Totonicapan,70
 Chimaltenango,Villa Nueva,44
 Chimaltenango,Zacapa,38
@@ -196,7 +196,7 @@ Coatepeque,San Juan Sacatepequez,49
 Coatepeque,San Miguel Chicaj,49
 Coatepeque,San Pedro Sacatepequez,87
 Coatepeque,Sanarate,81
-Coatepeque,Santa Lucia Cotzumalguapa,101
+Coatepeque,Santa Lucia Cotzumalguapa,99
 Coatepeque,Solola,44
 Coatepeque,Totonicapan,42
 Coatepeque,Villa Nueva,75
@@ -270,7 +270,7 @@ Huehuetenango,Coban,64
 Huehuetenango,Escuintla,86
 Huehuetenango,Jacaltenango,22
 Huehuetenango,Jalapa,35
-Huehuetenango,Jutiapa,101
+Huehuetenango,Jutiapa,99
 Huehuetenango,Mazatenango,55
 Huehuetenango,Mixco,43
 Huehuetenango,Petapa,12
@@ -515,7 +515,7 @@ Quetzaltenango,San Juan Sacatepequez,25
 Quetzaltenango,San Miguel Chicaj,52
 Quetzaltenango,San Pedro Sacatepequez,2
 Quetzaltenango,Sanarate,64
-Quetzaltenango,Santa Lucia Cotzumalguapa,101
+Quetzaltenango,Santa Lucia Cotzumalguapa,99
 Quetzaltenango,Solola,47
 Quetzaltenango,Totonicapan,96
 Quetzaltenango,Villa Nueva,3
@@ -551,7 +551,7 @@ Retalhuleu,Villa Nueva,68
 Retalhuleu,Zacapa,3
 San Benito,Ciudad de Guatemala,39
 San Benito,Antigua Guatemala,37
-San Benito,Barberena,101
+San Benito,Barberena,99
 San Benito,Chichicastenango,38
 San Benito,Chimaltenango,72
 San Benito,Chiquimula,63
@@ -719,7 +719,7 @@ Sanarate,San Juan Sacatepequez,90
 Sanarate,San Miguel Chicaj,61
 Sanarate,San Pedro Sacatepequez,47
 Sanarate,Santa Lucia Cotzumalguapa,99
-Sanarate,Solola,101
+Sanarate,Solola,99
 Sanarate,Totonicapan,76
 Sanarate,Villa Nueva,64
 Sanarate,Zacapa,88
@@ -828,7 +828,7 @@ Villa Nueva,Mixco,29
 Villa Nueva,Petapa,2
 Villa Nueva,Puerto Barrios,51
 Villa Nueva,Quetzaltenango,76
-Villa Nueva,Retalhuleu,101
+Villa Nueva,Retalhuleu,99
 Villa Nueva,San Benito,63
 Villa Nueva,San Francisco El Alto,21
 Villa Nueva,San Juan Sacatepequez,81

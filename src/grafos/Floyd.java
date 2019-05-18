@@ -1,5 +1,7 @@
 package grafos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Gerardo
@@ -60,18 +62,42 @@ public class Floyd
   
     public void printSolution(int dist[][]) 
     { 
-        System.out.println("The following matrix shows the shortest "+ 
-                         "distances between every pair of vertices"); 
+        System.out.println("\nSe muestran las rutas mas cortas entre las ciudades"); 
         for (int i=0; i<V; ++i) 
-        { 
+        {
+            if(i < 10)System.out.print(i + "  =>  ");
+            if(i >= 10)System.out.print(i + " =>  ");
             for (int j=0; j<V; ++j) 
             { 
                 if (dist[i][j] == INF) 
                     System.out.print("INF "); 
-                else
-                    System.out.print(dist[i][j]+"   "); 
+                else{
+                    if (dist[i][j] < 10) System.out.print(dist[i][j] + "   ");
+                    if (dist[i][j] >= 10) System.out.print(dist[i][j] + "  ");
+                }
+                    
             } 
             System.out.println(); 
         } 
+    }
+    
+    void centro(int[][] grafo, ArrayList<String> cities){
+        int[] maximos = new int[cities.size()];
+        for(int i = 0; i < cities.size(); i++)
+        {
+            int max = 0;
+            for(int j = 0; j < cities.size(); j++)
+            {
+                if(i != j && grafo[j][i] > max)
+                {
+                    max = grafo[i][j];
+                    maximos[i] = max;
+                }
+            }
+        }
+        int min = 10000;
+        
+        for(int i = 0; i < cities.size(); i++) if(maximos[i] < min) min = maximos[i];
+        System.out.println("\nEl centro del grafo es " + cities.get(min));
     }
 }
