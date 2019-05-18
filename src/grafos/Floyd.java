@@ -21,17 +21,15 @@ public class Floyd
         int dist[][] = new int[V][V]; 
         int i, j, k; 
   
-        /* 
-         *  Se inicializa la matriz nueva con los mismos valores que 
-         *  están en la matriz que se toma como parametro
-         */
+         
+        // Se inicializa la matriz nueva con los mismos valores que 
+        // están en la matriz que se toma como parametro
         for (i = 0; i < V; i++) 
             for (j = 0; j < V; j++) 
                 dist[i][j] = graph[i][j];
   
-        /* 
-         * Se suman los vertices uno por uno al set de vertices intermedios 
-         */
+         
+        // Se suman los vertices uno por uno al set de vertices intermedios 
         for (k = 0; k < V; k++) 
         { 
             // Se toman todos los vertices como origen uno por uno
